@@ -1,0 +1,41 @@
+Assignment 4: Connect 4
+Deadline: 7 April 2018 @9pm
+
+Do NOT include node_modules directory in your submission. Part 5 files should be in a separate sub-directory and the files outside this subdirectory should not include Part 5 code. The README file should contain details on which parts you implemented, what works in your code, and what does not work.
+
+You must only use the provided lib.js on client side (https://www.facebook.com/groups/cs300lums/204873100102332/) and you must only use ReactJS for rendering. Feel free to explore JSX but it is not required. You can also run 'node --inspect-brk A4.js' and follow on-screen instruction for debugging nodeJS code.
+
+See http://howdoyouplayit.com/connect-4-board-game-rules-play/ for a description of Connect 4's rules, or https://www.mathsisfun.com/games/connect4.html to play it against a computer.
+
+You have to implement Connect 4 (similar to the online game mentioned above) in 5 parts:
+
+Part 1: Basic two player Connect 4 using socket.IO
+
+Create a 7x6 Connect 4 grid that is updated with user input. You don't need to use images for occupied boxes; just mark an occupied box with a character unique to the player (like "X" and "O"). Start the game when player 2 joins and make sure players only make a move when it's their turn. Do not worry about any more players joining.
+
+Part 2: Win/Lose identification
+
+When the game ends, restart the game after notifying the players about who won/lost or whether the game ended in a draw.
+
+Part 3: Highlight columns on mouse movement
+
+In the online game a checker is displayed on top of the column under your cursor. Similarly you have to highlight the grid's columns on mouse movement. If dropping a checker into a column allows the other player to win in the next move, highlight it red. Highlight it green otherwise.
+
+Part 4: Arbitrary number of simultaneous games
+
+Each new player should either wait for a player to pair with, or pair with a player who was previously waiting. Creating a separate game state for each game from the start would make this part really easy. Do not worry about players disconnecting before the game ends.
+
+Part 5: Implement ONE of these ideas, or your own idea along the same lines (*not* about beautifying the interface)
+
+5a - Use MongoDB (https://mongodb.github.io/node-mongodb-native/) to store game and client state, using JSON where appropriate, so that stopping and restarting the server does not affect games in progress.
+
+5b - A viewer mode where you get a list of ongoing games and can click on any game to view whats going on on its board. When clicking on any other game, the page should not reload and just the board should switch to displaying and start live updating moves of the other game now.
+
+5c - Write code for login and creating users. You may use any library available (e.g. http://passportjs.org/) but you cannot copy code. You can also implement Facebook login (https://developers.facebook.com/docs/facebook-login/web) and then you don’t have to handle new user creation. In any case, you need to show the rank of both players in the game as 0-5 stars with their name. Star rank = round_up(games_won / games_played x 5). You can store rank data in a simple JSON file.
+
+5d - Host your game on Firebase (https://firebase.google.com/). You are allowed to import firebase client libraries and use them instead of socket.io for this part. In this case, you will use the builtin http server of Firebase and only provide Firebase with handlers for specific messages (Firebase messages instead of socket.io messages).
+
+5e - Use ReactJS-Native (https://facebook.github.io/react-native/) to convert your game to a mobile platform (iPhone or Android). It should be playable on the same network on which your server is running with a hardcoded IP address.
+
+Let's see if some of you enjoy the assignment so much that you implement all of the options in Part 5 :)
+
